@@ -1,0 +1,5 @@
+This is a Proof of Concept (from GTUG BootCamp 2010), which is: Try to code a complete client side data-load (from some REST services) and graph visualization using Neo4j REST server, the Java Script Visualization Framework JIT and Google Web Toolkit.
+
+see http://blog.fakod.eu/2010/11/25/neo4j-rest-server-gwt-and-jit-part-1/
+and
+http://blog.fakod.eu/2010/11/27/neo4j-rest-server-gwt-and-jit-part-2/
