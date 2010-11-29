@@ -313,7 +313,7 @@ public class MySampleApplication implements EntryPoint {
      */
     public void onModuleLoad() {
         VerticalPanel mainPanel = new VerticalPanel();
-        graph = new ForceDirected();
+        graph = new ForceDirected();//RGraph();
 
         final Button button = new Button("Load Path");
 
