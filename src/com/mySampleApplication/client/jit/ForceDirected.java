@@ -93,7 +93,7 @@ animate;
                 });
                 //display node info in tooltip
                 tip.innerHTML = "<div class=\"tip-title\">Objekt: " + node.name + "</div>"
-                + "<div class=\"tip-text\"><b>Anzahl eNDK Raster Verbindungen:</b> " + count + "</div>";
+                + "<div class=\"tip-text\"><b>Matrix Relations:</b> " + count + "</div>";
             }
         },
         // Add node events
@@ -151,10 +151,10 @@ animate;
                 });
                 // Build the right column relations list.
                 // This is done by traversing the clicked node connections.
-                var html = "<h4>" + node.name + "</h4><b> has relations:</b><ul><li>",
+                var html = "<h4>" + node.name + "</h4><b> has relation:</b><ul><li>",
                 list = [];
                 node.eachAdjacency(function(adj) {
-                    if (adj.getData('alpha')) list.push(adj.data["nodeAttr"] + "<br>" + adj.nodeTo.name + "<br>.");
+                    if (adj.getData('alpha')) list.push(adj.data["nodeAttr"] + " to node:<br>" + adj.nodeTo.name + "<br>.");
                 });
                 //append connections information
                 $wnd.$jit.id('inner-details').innerHTML = html + list.join("</li><li>") + "</li></ul>";
@@ -201,18 +201,13 @@ animate;
         loadData(nativeGraph, data);
     }
 
-    private native void loadData(JavaScriptObject fd,
-                                 JavaScriptObject data)/*-{
+    private native void loadData(JavaScriptObject fd, JavaScriptObject data)/*-{
 		fd.loadJSON(data);
-    // compute positions incrementally and animate.
-    fd.graph.eachNode(function(n) {
-		  var pos = n.getPos();
-		  pos.setc(-200, -200);
-		});
 		fd.compute('end');
-		fd.fx.animate({
-		  modes:['polar'],
-		  duration: 2000
-		});
+        fd.animate({
+            modes: ['linear'],
+            transition: $wnd.$jit.Trans.Elastic.easeOut,
+            duration: 3000
+        });
 	}-*/;
 }
