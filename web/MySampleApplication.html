@@ -1,16 +1,29 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the    -->
+<!-- browser's rendering engine into               -->
+<!-- "Standards Mode". Replacing this declaration  -->
+<!-- with a "Quirks Mode" doctype may lead to some -->
+<!-- differences in layout.                        -->
+
 <html>
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--                                                               -->
+    <!-- Consider inlining CSS to reduce the number of requested files -->
+    <!--                                                               -->
+    <link type="text/css" rel="stylesheet" href="MySampleApplication.css">
 
     <!--                                           -->
     <!-- Any title is fine                         -->
     <!--                                           -->
-    <title>Wrapper HTML for App</title>
+    <title>Web Application Starter Project</title>
 
-    <link type="text/css" rel="stylesheet" href="MySampleApplication.css">
-
-    <!--                                            -->
-    <!-- This script is required bootstrap stuff.   -->
-    <!--                                            -->
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
     <script type="text/javascript" language="javascript"
             src="MySampleApplication/MySampleApplication.nocache.js"></script>
 </head>
@@ -18,22 +31,39 @@
 <!--                                           -->
 <!-- The body can have arbitrary html, or      -->
 <!-- you can leave the body empty if you want  -->
-<!-- to create a completely dynamic ui         -->
+<!-- to create a completely dynamic UI.        -->
 <!--                                           -->
 <body>
+<div id="container">
 
-<h1>Neo4j REST Server, GWT and JIT</h1>
+    <div id="left-container">
 
-<p>
-    Click the Button to load the graph JSON object
-</p>
 
-<table align="center">
-    <tr>
-        <td id="slot1"></td>
-        <br>
-        <td id="slot2"></td>
-    </tr>
-</table>
+        <div class="text">
+            <h4>
+                Matrix Relations Example
+            </h4>
+
+
+        </div>
+
+        <div id="id-list"></div>
+
+
+    </div>
+
+    <div id="center-container">
+        <div id="mainPanel"></div>
+    </div>
+
+    <div id="right-container">
+
+        <div id="inner-details"></div>
+
+    </div>
+
+    <div id="log"></div>
+</div>
+
 </body>
 </html>

@@ -9,6 +9,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.Timer;
+import com.mySampleApplication.client.jit.ForceDirected;
+import com.mySampleApplication.client.jit.RGraph;
 
 import java.util.*;
 
@@ -303,42 +305,47 @@ public class MySampleApplication implements EntryPoint {
      */
     static JITGraph jitGraph = new JITGraph();
 
+    private ForceDirected graph;
+
     /**
      * This is the entry point method.
      */
     public void onModuleLoad() {
-
+        VerticalPanel mainPanel = new VerticalPanel();
+        graph = new ForceDirected();
 
         final Button button = new Button("Load Path");
-        final Label label = new Label();
+        //final Label label = new Label();
 
         button.addClickHandler(new ClickHandler() {
 
             public void onClick(ClickEvent event) {
-                jitGraph.getPathREST("3", new MyAsyncCallback(label));
+                jitGraph.getPathREST("3", new MyAsyncCallback(graph));
             }
         });
 
-        RootPanel.get("slot1").add(button);
-        RootPanel.get("slot2").add(label);
+        mainPanel.add(graph);
+		mainPanel.add(button);
+
+        RootPanel.get("mainPanel").add(mainPanel);
     }
 
     /**
      * callback class which displays the JSON object
      */
     private static class MyAsyncCallback implements AsyncCallback<String> {
-        private Label label;
+        private ForceDirected graph;
 
-        public MyAsyncCallback(Label label) {
-            this.label = label;
+        public MyAsyncCallback(ForceDirected graph) {
+            this.graph = graph;
         }
 
-        public void onSuccess(String result) {
-            label.getElement().setInnerHTML(result);
+        public void onSuccess(String data) {
+            graph.loadData(data);
         }
 
         public void onFailure(Throwable throwable) {
-            label.setText("Failed to receive answer from server!");
+            //label.setText("Failed to receive answer from server!");
         }
     }
 }

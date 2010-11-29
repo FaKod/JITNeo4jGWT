@@ -8,4 +8,11 @@
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.mySampleApplication.client.MySampleApplication'/>
 
+    <!--	<script src="jit.js"></script>-->
+    <script src="jit-yc.js"></script>
+    <!--	<script src="Extras/excanvas.js"></script>-->
+
+    <source path='client' />
+	<source path='shared' />
+
 </module>
