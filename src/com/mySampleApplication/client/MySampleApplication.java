@@ -316,7 +316,6 @@ public class MySampleApplication implements EntryPoint {
         graph = new ForceDirected();
 
         final Button button = new Button("Load Path");
-        //final Label label = new Label();
 
         button.addClickHandler(new ClickHandler() {
 
@@ -346,7 +345,6 @@ public class MySampleApplication implements EntryPoint {
         }
 
         public void onFailure(Throwable throwable) {
-            //label.setText("Failed to receive answer from server!");
         }
     }
 }
