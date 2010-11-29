@@ -5,7 +5,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ForceDirected extends Widget {
+public class ForceDirected extends Widget implements NativeJITGraph {
 
     private final static String CSS_CLASS = "infovis-ForceDirected";
     private static int count = 1;
@@ -92,8 +92,8 @@ animate;
                     count++;
                 });
                 //display node info in tooltip
-                tip.innerHTML = "<div class=\"tip-title\">Objekt: " + node.name + "</div>"
-                + "<div class=\"tip-text\"><b>Matrix Relations:</b> " + count + "</div>";
+                tip.innerHTML = "<div class=\"tip-title\">Node: " + node.name + "</div>"
+                + "<div class=\"tip-text\"><b>Relations:</b> " + count + "</div>";
             }
         },
         // Add node events
@@ -201,10 +201,10 @@ animate;
         loadData(nativeGraph, data);
     }
 
-    private native void loadData(JavaScriptObject fd, JavaScriptObject data)/*-{
-		fd.loadJSON(data);
-		fd.compute('end');
-        fd.animate({
+    private native void loadData(JavaScriptObject nativeGraph, JavaScriptObject data)/*-{
+		nativeGraph.loadJSON(data);
+		nativeGraph.compute('end');
+        nativeGraph.animate({
             modes: ['linear'],
             transition: $wnd.$jit.Trans.Elastic.easeOut,
             duration: 3000

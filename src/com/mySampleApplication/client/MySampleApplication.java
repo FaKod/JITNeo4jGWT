@@ -10,6 +10,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.Timer;
 import com.mySampleApplication.client.jit.ForceDirected;
+import com.mySampleApplication.client.jit.NativeJITGraph;
 import com.mySampleApplication.client.jit.RGraph;
 
 import java.util.*;
@@ -305,7 +306,7 @@ public class MySampleApplication implements EntryPoint {
      */
     static JITGraph jitGraph = new JITGraph();
 
-    private ForceDirected graph;
+    private NativeJITGraph graph;
 
     /**
      * This is the entry point method.
@@ -324,7 +325,7 @@ public class MySampleApplication implements EntryPoint {
             }
         });
 
-        mainPanel.add(graph);
+        mainPanel.add((Widget)graph);
 		mainPanel.add(button);
 
         RootPanel.get("mainPanel").add(mainPanel);
@@ -334,9 +335,9 @@ public class MySampleApplication implements EntryPoint {
      * callback class which displays the JSON object
      */
     private static class MyAsyncCallback implements AsyncCallback<String> {
-        private ForceDirected graph;
+        private NativeJITGraph graph;
 
-        public MyAsyncCallback(ForceDirected graph) {
+        public MyAsyncCallback(NativeJITGraph graph) {
             this.graph = graph;
         }
 

@@ -5,7 +5,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
-public class RGraph extends Widget {
+public class RGraph extends Widget implements NativeJITGraph {
 
 	private final static String CSS_CLASS = "infovis-RGraph";
 	private static int count = 1;
